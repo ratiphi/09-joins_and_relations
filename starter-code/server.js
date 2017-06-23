@@ -87,9 +87,9 @@ app.put('/articles/:id', function(request, response) {
     // DONE: Add the required values from the request as data for the SQL query to interpolate
     client.query(
       `UPDATE articles
-      SET title=$1, category=$2, "publishedOn"=$3, body=$4
-      WHERE article_id=$5`,
-      [request.body.title, request.body.category, request.body.publishedOn, request.body.body, request.body.article_id]
+      SET title=$1, category=$2, "publishedOn"=$3, body=$4, author_id=$5
+      WHERE article_id=$6`,
+      [request.body.title, request.body.category, request.body.publishedOn, request.body.body, request.body.author_id, request.params.id]
     )
   })
   .then(function() {
